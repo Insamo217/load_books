@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+
+                <h3>Добавить новую книгу</h3><br>
+
+                <form class="" action="{% url 'post_create_url' %}" method="post">
+
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        {{ field.label }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" name="button">
+                Добавить книгу
+                </button>
+                <br><br>
+                <a class="btn btn-outline-secondary" href="{% url 'books_list_url' %}">
+                    Обратно на главную страницу</a>
+
+                </form>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

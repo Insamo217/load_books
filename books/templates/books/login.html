@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Авторизация пользователя</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Войти" class="btn btn-outline-success">
+        </form> <br>
+
+
+        <h3><a class="btn btn-outline-success" href="{% url 'books_list_url' %}">
+            Обратно на главную страницу</a>
+        </h3><br>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="btn btn-outline-danger" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+    </div>
+  </div>
+</div>
